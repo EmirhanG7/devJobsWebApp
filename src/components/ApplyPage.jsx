@@ -1,7 +1,5 @@
 import data from '/data.json';
 import { useParams } from 'react-router-dom';
-import { LuSun } from "react-icons/lu";
-import { HiMoon } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
 export default function ApplyPage() {
@@ -16,11 +14,9 @@ export default function ApplyPage() {
                 <div className="headerContent">
                     <Link to={'/'}><h1>devjobs</h1></Link>
                     <div className="lightDark">
-                        <LuSun />
                         <div onClick={()=> document.body.classList.toggle("dark-theme")} className="themeBtn">
                             <img src="/images/ellipse-10.svg" alt="" />
                         </div>
-                        <HiMoon className="mooooon" />
                     </div>
                 </div>
                 <div className="detailHeader">

@@ -4,6 +4,7 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import JobsDetails from './components/JobsDetails.jsx'
 import ApplyPage from './components/ApplyPage.jsx';
+import {JobsProvider} from "./context/JobsContext.jsx";
 
 const router = createBrowserRouter([
     {
@@ -21,5 +22,7 @@ const router = createBrowserRouter([
   ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+    <JobsProvider>
     <RouterProvider router={router} />
+    </JobsProvider>
 )

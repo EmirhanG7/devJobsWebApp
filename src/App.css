@@ -19,19 +19,24 @@
     --ButtonBlue: #5964e0;
     --InputGray: #e7e8e9;
     --ButtonGray: #EEEFFC;
+    --Placeholder: #8c8f96;
+    --Filters-bg-color: #fff;
 }
 
 .dark-theme {
     --LightGray: #121721;
     --White: #19202D;
     --GrayBlack: #FFF;
-    --LightGray: #121721;
     --InputGray: #313743;
     --ButtonGray: #303642;
     --ButtonBlue: #FFF;
+    --Filters-bg-color: #19202d;
+    transition: all 0.5s ease;
 
     & .themeBtn {
         justify-content: flex-end!important;
+        background: #303642!important;
+
     }
 }
 
@@ -92,6 +97,7 @@ button {
             }
 
             & .themeBtn {
+                transition: all 0.5s ease;
                 cursor: pointer;
                 display: flex;
                 justify-content: flex-start;
@@ -102,77 +108,146 @@ button {
                 width: 60px;
                 height: 32px;
 
-                & img {
+                & span {
                     width: 20px;
                     height: 20px;
+                    border-radius: 50%;
+                    background: #5964E0;
+                    transition: all 0.3s ease;
                 }
             }
-        }
-    }
-
-    & form {
-        padding: 16px;
-        position: absolute;
-        top: 70%;
-        left: 50%;
-        transform: translate(-50%);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        max-width: 1110px;
-        height: 80px;
-        background: var(--White);
-        border-radius: 8px;
-
-        & .filter {
-            display: flex;
-            border-right: 1px solid var(--DarkGray);
-            height: 100%;
-            align-items: center;
-            justify-content: center;
-
-            & ::placeholder {
-                color: var(--GrayBlack);
+            & .themeBtn:hover {
+                & span {background: #939BF4;}
             }
         }
-
-        & input {
-            border: none;
-            outline: none;
-            padding: 0 20px;
-            font-size: 18px;
-            font-weight: 400;
-            background-color: var(--White);
-            width: 100%;
-        }
-
-        & .checkbox {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-
-            & input {color: var(--InputGray);/* KONTROL !!! */}
-
-            & p {color: var(--GrayBlack);}
-        }
-
-        & button {
-            cursor: pointer;
-            border: none;
-            outline: none;
-            background-color: #5964e0;
-            padding: 16px 34px;
-            border-radius: 8px;
-            color: #FFF;
-            text-align: center;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
     }
+
 }
+
+.filterBar {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1110px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    background-color: var(--Filters-bg-color);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.searchInput {
+    background-image: url("/images/search-icon.svg");
+    background-repeat: no-repeat;
+    background-position: left 24px center;
+    background-size: 16px 24px;
+    color: var(--GrayBlack);
+    background-color: var(--Filters-bg-color);
+    padding: 32px 32px 32px 56px;
+    border: none;
+    border-right: 1px solid rgba(110, 128, 152, .2);
+    outline: none;
+    cursor: pointer;
+    flex: 2;
+}
+
+.searchInput::placeholder {color: var(--Placeholder);}
+
+.locationInput {
+    background-image: url("/images/location-icon.svg");
+    background-repeat: no-repeat;
+    background-position: left 24px center;
+    background-size: 16px 24px;
+    color: var(--GrayBlack);
+    background-color: var(--Filters-bg-color);
+    padding: 32px 32px 32px 56px;
+    border: none;
+    outline: none;
+    appearance: none;
+    border-right: 1px solid rgba(110, 128, 152, .2);
+    cursor: pointer;
+    flex: 1;
+}
+.locationInput::placeholder {color: var(--Placeholder);}
+
+.timeCheckInput input[type="checkbox"] {
+    display: none;
+}
+
+.timeCheckInput {
+    margin-left: 32px;
+    margin-right: 26px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.timeCheckInput span {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: var(--GrayBlack);
+}
+
+.timeCheckInput span:before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+    background-color: var(--InputGray);
+    border-radius: 3px;
+}
+
+.timeCheckInput span:after {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    content: "";
+    width: 24px;
+    height: 24px;
+    background-image: url("/images/check-icon.svg");
+    background-size: 12px 10px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+}
+
+.timeCheckInput input[type="checkbox"]:checked + span:before {
+    background-color: #5964e0;
+}
+
+.timeCheckInput input[type="checkbox"]:checked + span:after {
+    opacity: 1;
+}
+
+.filterBtn {
+    margin-right: 16px;
+    min-width: 141px;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: #5964e0;
+    border-radius: 5px;
+    padding: 16px 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: background-color .2s ease-out;
+    text-decoration: none;
+}
+
+.filterBtn:hover {background-color: #939bf4;}
+
+
 
 .searchIcon {color: #5964E0;}
 
@@ -186,6 +261,12 @@ button {
     width: 100%;
     margin: 0 auto;
 
+    & a:hover {
+        .advertisement h2 {
+            color: #6E8098;
+        }
+    }
+
     & .advertisement {
         width: 100%;
         text-overflow: ellipsis;
@@ -194,7 +275,7 @@ button {
         padding: 49px 20px 36px 20px;
         border-radius: 8px;
         background: var(--White);
-    
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
         & .logo {
             display: flex;
             align-items: center;
@@ -222,6 +303,7 @@ button {
             font-weight: 700;
             line-height: normal;
             margin-bottom: 16px;
+            transition: all 0.2s ease;
         }
 
         & h4 {
@@ -241,6 +323,7 @@ button {
     border-radius: 8px;
     background-color: #5964E0;
     margin: 64px auto;
+    transition: all 0.2s ease-out;
 
     & p {
         color: #FFF;
@@ -252,6 +335,8 @@ button {
         line-height: normal;
     }
 }
+
+.loadMoreBtn:hover {background-color: #939BF4;}
 
 .details {
     padding: 48px;
@@ -305,6 +390,7 @@ button {
             font-weight: 700;
             line-height: normal;
             text-align: center;
+            transition: all 0.2s ease-out;
         }
 
         & button:hover {background-color: #939bf4;}
@@ -402,6 +488,7 @@ button {
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        transition: all 0.2s ease-out;
     }
 
 
@@ -454,7 +541,6 @@ button {
         }
     }
 
-
     & button {
         border: none;
         outline: none;
@@ -468,6 +554,7 @@ button {
         font-weight: 700;
         line-height: normal;
         margin-right: 48px;
+        transition: all 0.2s ease-out;
     }
     
     & button:hover {background-color: #c5c9f4;}

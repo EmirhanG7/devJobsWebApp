@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
 import data from '/data.json';
+import {useContext} from "react";
+import {JobsContext} from "../context/JobsContext.jsx";
 
-export default function Jobs({ joblimit, setJobLimit, filter, location, fullTime }) {
+export default function Jobs() {
+
+    const { filter, location, fullTime, jobLimit, setJobLimit } = useContext(JobsContext);
 
     let filteredData = data.filter((job) => (
-        job.position.toLowerCase().includes(filter.toLowerCase()) && 
-        job.location.toLowerCase().includes(location.toLowerCase()) && 
+        job.position.toLowerCase().includes(filter.toLowerCase()) &&
+        job.location.toLowerCase().includes(location.toLowerCase()) &&
         job.contract.toLowerCase().includes(fullTime.toLowerCase())
 
     ))
@@ -14,7 +18,7 @@ export default function Jobs({ joblimit, setJobLimit, filter, location, fullTime
         <>
             <div className="jobAdvertisement">
                 {
-                    filteredData.slice(0, joblimit).map((job) => (
+                    filteredData.slice(0, jobLimit).map((job) => (
                         <Link to={`/jobs/${job.id}`} key={job.id}>
                             <div className="advertisement">
                                 <div className="logo" style={{backgroundColor: job.logoBackground}}>
@@ -30,8 +34,8 @@ export default function Jobs({ joblimit, setJobLimit, filter, location, fullTime
                 }
             </div>
 
-            { joblimit >= filteredData.length ? '' :
-                <button onClick={e => setJobLimit(joblimit + 3)} className='loadMoreBtn'><p>Load More</p></button>
+            { jobLimit >= filteredData.length ? '' :
+                <button onClick={e => setJobLimit(jobLimit + 3)} className='loadMoreBtn'><p>Load More</p></button>
             }
         </>
     )

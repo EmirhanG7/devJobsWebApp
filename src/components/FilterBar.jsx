@@ -1,24 +1,30 @@
-import { BiSearchAlt2 } from "react-icons/bi";
-import { IoLocationSharp } from "react-icons/io5";
 
-export default function FilterBar({ handleForm }) {
+export default function FilterBar() {
 
     return (
 
-        <form onSubmit={handleForm}>
-            <div className="filter">
-                <BiSearchAlt2 className="searchIcon" />
-                <input name="filter" type="text" placeholder='Filter by title, companies, expertise...'/>
-            </div>
-            <div className="filter">
-                <IoLocationSharp className="locationIcon" />
-                <input name="filterLocation" type="text" placeholder='Filter by location...'/>
-            </div>
-            <div className="checkbox">
-                <input name="time" type="checkbox" /> <p>Full Time Only</p>
-            </div>
-            <button type="submit">Search</button>
-        </form>
+        <div className="filterBar">
+            <input className='searchInput' type="text" name='location' placeholder='title..'/>
+            <select className="locationInput">
+                <option value="false">Filter by location…</option>
+                <option value="Germany">Germany</option>
+                <option value="Japan">Japan</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Russia">Russia</option>
+                <option value="Singapore">Singapore</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United States">United States</option>
+            </select>
+            <label className='timeCheckInput'>
+                <input type="checkbox" name="fulltime"/>
+                <span>Full Time Only</span>
+            </label>
+            <button className="filterBtn">
+                <span>Search</span>
+            </button>
+
+        </div>
+
 
     )
 }
