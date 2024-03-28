@@ -65,6 +65,7 @@ button {
     background-image: url("/images/triangle.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: bottom left;
 
     & .backgroundImg {
         position: relative;
@@ -89,7 +90,7 @@ button {
             justify-content: center;
             gap: 18px;
 
-            & svg {
+            & img {
                 width: 24px;
                 height: 24px;
                 fill: white;
@@ -185,7 +186,7 @@ button {
     cursor: pointer;
 }
 
-.timeCheckInput span {
+.timeCheckInput .fullTime {
     position: relative;
     display: flex;
     align-items: center;
@@ -193,7 +194,7 @@ button {
     color: var(--GrayBlack);
 }
 
-.timeCheckInput span:before {
+.timeCheckInput .fullTime:before {
     content: "";
     width: 24px;
     height: 24px;
@@ -202,7 +203,7 @@ button {
     border-radius: 3px;
 }
 
-.timeCheckInput span:after {
+.timeCheckInput .fullTime:after {
     position: absolute;
     left: 0;
     top: 50%;
@@ -217,12 +218,16 @@ button {
     opacity: 0;
 }
 
-.timeCheckInput input[type="checkbox"]:checked + span:before {
+.timeCheckInput input[type="checkbox"]:checked + .fullTime:before {
     background-color: #5964e0;
 }
 
-.timeCheckInput input[type="checkbox"]:checked + span:after {
+.timeCheckInput input[type="checkbox"]:checked + .fullTime:after {
     opacity: 1;
+}
+
+.mobileMenuBtn {
+    display: none;
 }
 
 .filterBtn {

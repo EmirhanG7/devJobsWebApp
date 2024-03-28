@@ -4,7 +4,7 @@ export default function FilterBar() {
     return (
 
         <div className="filterBar">
-            <input className='searchInput' type="text" name='location' placeholder='title..'/>
+            <input className='searchInput' type="text" name='location' placeholder='Filter by title..'/>
             <select className="locationInput">
                 <option value="false">Filter by location…</option>
                 <option value="Germany">Germany</option>
@@ -17,12 +17,12 @@ export default function FilterBar() {
             </select>
             <label className='timeCheckInput'>
                 <input type="checkbox" name="fulltime"/>
-                <span>Full Time Only</span>
+                <span className='fullTime'>Full Time <span className='only'>&nbsp;Only</span></span>
             </label>
+            <button className='mobileMenuBtn'></button>
             <button className="filterBtn">
                 <span>Search</span>
             </button>
-
         </div>
 
 

@@ -10,19 +10,20 @@ export default function JobsDetails() {
     return (
         <>
             <div className="header">
-                <img className='backgroundImg' src="/images/triangle.svg" />
                 <div className="headerContent">
                     <Link to={'/'}><h1>devjobs</h1></Link>
                     <div className="lightDark">
-                        <div onClick={()=> document.body.classList.toggle("dark-theme")} className="themeBtn">
-                            <img src="/images/ellipse-10.svg" alt="" />
+                        <img src="/images/sun-icon.svg" alt='sun-icon'/>
+                        <div onClick={() => document.body.classList.toggle("dark-theme")} className="themeBtn">
+                            <span></span>
                         </div>
+                        <img src="/images/moon-icon.svg" alt="moon-icon"/>
                     </div>
                 </div>
                 <div className="detailHeader">
                     <div className="leftside">
                         <div className="logo" style={{backgroundColor: job.logoBackground}}>
-                            <img src={job.logo} />
+                            <img src={job.logo}/>
                         </div>
                         <div className="detailHeaderTitle">
                             <h1>{job.company}</h1>
