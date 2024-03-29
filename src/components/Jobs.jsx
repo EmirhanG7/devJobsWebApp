@@ -5,7 +5,7 @@ import {JobsContext} from "../context/JobsContext.jsx";
 
 export default function Jobs() {
 
-    const { filter, location, fullTime, jobLimit, setJobLimit } = useContext(JobsContext);
+    const { filter, setFilter, location, setLocation, fullTime, setFullTime, jobLimit, setJobLimit } = useContext(JobsContext);
 
     let filteredData = data.filter((job) => (
         job.position.toLowerCase().includes(filter.toLowerCase()) &&
@@ -14,12 +14,19 @@ export default function Jobs() {
 
     ))
 
+    const handleReset = () => {
+        setJobLimit(9)
+        setFilter('')
+        setLocation('')
+        setFullTime('')
+    }
+
     return (
         <>
             <div className="jobAdvertisement">
                 {
                     filteredData.slice(0, jobLimit).map((job) => (
-                        <Link to={`/jobs/${job.id}`} key={job.id}>
+                        <Link to={`/jobs/${job.id}`} key={job.id}  onClick={handleReset}>
                             <div className="advertisement">
                                 <div className="logo" style={{backgroundColor: job.logoBackground}}>
                                     <img src={job.logo} />

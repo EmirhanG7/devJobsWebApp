@@ -252,11 +252,13 @@ button {
 
 .filterBtn:hover {background-color: #939bf4;}
 
-
-
 .searchIcon {color: #5964E0;}
 
 .locationIcon {color: #5964E0;}
+
+.popUpMenuContainer {
+    display: none;
+}
 
 .jobAdvertisement {
     display: grid;
